@@ -2,7 +2,7 @@
   "name": "frontend",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://alexawnder.github.io/4800-project",
+  "homepage": "https://jeffreyhoang.github.io/4800-project",
   "dependencies": {
     "axios": "^1.7.9",
     "cra-template": "1.2.0",

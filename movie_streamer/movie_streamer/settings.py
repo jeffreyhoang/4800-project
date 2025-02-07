@@ -90,9 +90,11 @@ DATABASES = {
     'default': dj_database_url.config(default=os.getenv('DATABASE_URL'))
 }
 
-CORS_ALLOWED_ORIGINS = True
-
-CORS_ALLOW_CREDENTIALS = True
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:3000",  # React frontend
+    "https://jeffreyhoang.github.io",  # Your GitHub Pages frontend
+    "https://testing-production-a806.up.railway.app",  # Your Railway backend
+]
 
 
 CORS_ALLOW_HEADERS = [
