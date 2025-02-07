@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_URL = 'http://127.0.0.1:8000/api/meetings/';
+const API_URL = 'https://testing-production-a806.up.railway.app/api/meetings/';
 
 export const fetchMeetings = async () => {
     const response = await axios.get(API_URL);
