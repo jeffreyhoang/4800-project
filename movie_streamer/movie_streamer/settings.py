@@ -46,8 +46,8 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "intro.apps.IntroConfig",
-    'rest_framework',
-    'corsheaders', 
+    "rest_framework",
+    "corsheaders", 
 ]
 
 MIDDLEWARE = [
@@ -92,7 +92,19 @@ DATABASES = {
 
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",  # React frontend
+    "https://jeffreyhoang.github.io",  # Your GitHub Pages frontend
+    "https://testing-production-a806.up.railway.app",  # Your Railway backend
 ]
+
+CORS_ALLOW_HEADERS = [
+    "content-type",
+    "authorization",
+    "x-csrftoken",
+    "accept",
+]
+
+CORS_ALLOW_METHODS = ["GET", "POST", "PUT", "DELETE", "OPTIONS"]
+
 
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': [
