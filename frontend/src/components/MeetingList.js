@@ -9,8 +9,12 @@ const MeetingList = () => {
     }, []);
 
     const loadMeetings = async () => {
-        const data = await fetchMeetings();
-        setMeetings(data);
+        try {
+            const data = await fetchMeetings();  // Fetches data from the API
+            setMeetings(data);                  // Updates state if successful
+        } catch (error) {
+            console.error("Failed to load meetings:", error);  // Logs the error for debugging
+        }
     };
 
     const handleDelete = async (id) => {

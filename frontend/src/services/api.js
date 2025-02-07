@@ -1,22 +1,59 @@
 import axios from 'axios';
 
-const API_URL = 'https://testing-production-a806.up.railway.app/api/meetings/';
+const API_BASE_URL = "https://testing-production-a806.up.railway.app/api/meetings/";
 
-export const fetchMeetings = async () => {
-    const response = await axios.get(API_URL);
-    return response.data;
+// Ensure absolute URL by using `new URL()`
+const getApiUrl = (endpoint = "") => {
+    const fullUrl = new URL(endpoint, API_BASE_URL).toString();
+    console.log("API Request URL:", fullUrl);  // ✅ Log the API URL
+    return fullUrl;
 };
 
+export const fetchMeetings = async () => {
+    try {
+        const url = getApiUrl(); // Generates absolute URL
+        console.log("API Request URL Before Axios:", url);
+
+        const response = await axios({
+            method: "get",
+            url: url,
+            baseURL: null, // Ensure Axios does not modify the URL
+        });
+
+        console.log("API Response:", response);
+        return response.data;
+    } catch (error) {
+        console.error("Error fetching meetings:", error);
+        return [];
+    }
+};
+
+
 export const createMeeting = async (meetingData) => {
-    const response = await axios.post(API_URL, meetingData);
-    return response.data;
+    try {
+        const response = await axios.post(getApiUrl(), meetingData);
+        return response.data;
+    } catch (error) {
+        console.error("Error creating meeting:", error);
+        throw error;
+    }
 };
 
 export const updateMeeting = async (id, meetingData) => {
-    const response = await axios.put(`${API_URL}${id}/`, meetingData);
-    return response.data;
+    try {
+        const response = await axios.put(getApiUrl(`${id}/`), meetingData);
+        return response.data;
+    } catch (error) {
+        console.error("Error updating meeting:", error);
+        throw error;
+    }
 };
 
 export const deleteMeeting = async (id) => {
-    await axios.delete(`${API_URL}${id}/`);
+    try {
+        await axios.delete(getApiUrl(`${id}/`));
+    } catch (error) {
+        console.error("Error deleting meeting:", error);
+        throw error;
+    }
 };
