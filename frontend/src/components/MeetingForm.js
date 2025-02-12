@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { createMeeting } from '../services/api';
-import './MeetingForm.css'; // Import CSS file
+import './MeetingForm.css'; 
 
 const MeetingForm = ({ onAdd }) => {
     const [formData, setFormData] = useState({
